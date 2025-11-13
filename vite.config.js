@@ -6,12 +6,11 @@ export default defineConfig({
     outDir: "dist",
     chunkSizeWarningLimit: 2000,
     rollupOptions: {
-      input: "./index.html",
-      manualChunks(id) {
-        if (id.includes("node_modules")) return "vendor";
-      },
-      external: ["http", "https", "os", "url"]
+      input: "./index.html"
     }
+  },
+  optimizeDeps: {
+    include: ["ethers", "@walletconnect/web3-provider"]
   },
   server: {
     port: 5173
